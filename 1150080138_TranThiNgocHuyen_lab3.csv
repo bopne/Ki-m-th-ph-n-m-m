@@ -1,0 +1,43 @@
+﻿BÀI 7: LAZADA SALE (NGÀY 20-30),,,,
+Phạm vi: 20-25: Giảm 50% | 26-30: Giảm 70%,,,,
+,,,,
+KỸ THUẬT KIỂM THỬ GIÁ TRỊ BIÊN,,,,
+Vùng 1 (20-25),Giảm 50%,"Giá trị biên: 19, 20, 25, 26",,
+19,,Dưới min (Invalid),,
+20,,Biên dưới vùng 1 (Valid - 50%),,
+25,,Biên trên vùng 1 (Valid - 50%),,
+26,,Biên dưới vùng 2 (Valid - 70%),,
+Vùng 2 (26-30),Giảm 70%,"Giá trị biên: 25, 26, 30, 31",,
+25,,Dưới vùng 2 (50%),,
+26,,Biên dưới vùng 2 (Valid - 70%),,
+30,,Biên trên vùng 2 (Valid - 70%),,
+31,,Trên max (Invalid),,
+Xnom vùng 1,= 22 hoặc 23,Giá trị giữa vùng 1,,
+Xnom vùng 2,28,Giá trị giữa vùng 2,,
+,,,,
+PHÂN VÙNG TƯƠNG ĐƯƠNG,,,,
+Phân vùng theo ngày và mức giảm giá:,,,,
+* Phân vùng 1: Ngày < 20 → Invalid (Lỗi: Ngoài phạm vi sale),,,,
+* Phân vùng 2: 20 ≤ Ngày ≤ 25 → Valid (Nhận coupon giảm 50%),,,,
+* Phân vùng 3: 26 ≤ Ngày ≤ 30 → Valid (Nhận coupon giảm 70%),,,,
+* Phân vùng 4: Ngày > 30 → Invalid (Lỗi: Ngoài phạm vi sale),,,,
+,,,,
+Theo tiêu chí kiểu dữ liệu:,,,,
+* Nhập chữ → Invalid,,,,
+* Nhập số thập phân → Invalid,,,,
+* Nhập số nguyên → Kiểm tra theo phân vùng trên,,,,
+,,,,
+TEST CASES,,,,
+Test Case ID,Mô tả,Giá trị đầu vào,Kết quả mong đợi,Loại test
+TC_01,Ngày 19 (dưới min),19,Lỗi: Ngoài phạm vi sale,Invalid
+TC_02,Ngày 20 (biên vùng 1),20,Nhận coupon giảm 50%,Valid - Boundary
+TC_03,Ngày 22,22,Nhận coupon giảm 50%,Valid
+TC_04,Ngày 25 (biên vùng 1),25,Nhận coupon giảm 50%,Valid - Boundary
+TC_05,Ngày 26 (biên vùng 2),26,Nhận coupon giảm 70%,Valid - Boundary
+TC_06,Ngày 28,28,Nhận coupon giảm 70%,Valid
+TC_07,Ngày 30 (biên vùng 2),30,Nhận coupon giảm 70%,Valid - Boundary
+TC_08,Ngày 31 (trên max),31,Lỗi: Ngoài phạm vi sale,Invalid
+TC_09,Nhập chữ,abc,Lỗi: Phải nhập số,Invalid
+TC_10,Nhập số thập phân,25.5,Lỗi: Phải nhập số nguyên,Invalid
+,,,,
+Tổng số testcase: 6 kỹ thuật biên (2 vùng x 3 biên) + 4 trường hợp khác = 10 testcase,,,,
